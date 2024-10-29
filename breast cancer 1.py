@@ -48,4 +48,4 @@ input_data = pd.DataFrame({
 # Prediction
 if st.button("Predict"):
     prediction = model.predict(input_data)
-    st.write("Prediction:", "Malignant" if prediction[0] == 0 else "Benign")
+    st.write("Prediction:", "The person have cancer" if prediction[0] == 0 else "The person is healthy")
