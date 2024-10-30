@@ -1,5 +1,0 @@
-streamlit
-!pip install joblib
-pandas
-scikit-learn
-
