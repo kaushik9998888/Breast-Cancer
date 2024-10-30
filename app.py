@@ -8,18 +8,18 @@ from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
-# Function to ensure joblib is installed and updated
-def check_joblib():
-    try:
-        import joblib
-        print("joblib is installed.")
-    except ImportError:
-        print("joblib is not installed. Installing now...")
-        os.system('pip install joblib')
-        print("joblib installed successfully.")
+import subprocess
+import sys
 
-# Check for joblib installation
-check_joblib()
+# Install joblib if not present
+try:
+    import joblib
+except ImportError:
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "joblib"])
+    import joblib
+
+
+
 
 # Specify the model file name
 model_file = "model.joblib"
@@ -69,7 +69,7 @@ def run_streamlit_app():
     # Prediction button
     if st.button("Predict"):
         prediction = model.predict(input_data)
-        st.write("Prediction:", "The person has cancer" if prediction[0] == 0 else "The person is healthy")
+        st.write("Prediction:", "The person is dead" if prediction[0] == 0 else "The person is living")
 
 # Uncomment the following line to run the Streamlit app in a new terminal
 # run_streamlit_app()
